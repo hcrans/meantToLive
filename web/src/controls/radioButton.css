@@ -1,0 +1,18 @@
+.tab {
+  position: relative;
+  background-color: #f1f1f1;
+  border: 1px solid #ccc;
+  border-radius: 8px 0 0 8px; /* Adjust border radius for the left corners */
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.tab:hover {
+  background-color: #ddd;
+}
+
+.tab.active {
+  background-color: darkgray;
+  font-weight: bold;
+}

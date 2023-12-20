@@ -1,0 +1,7 @@
+- Order the days correctly
+- Save transaction to db
+  -Reconcile web transactions to local transaction on load
+- Stylize
+- Summarize totals
+- Better way to store token
+- Logout

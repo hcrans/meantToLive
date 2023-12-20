@@ -1,0 +1,48 @@
+.card-grid {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  flex-wrap: wrap;
+  overflow-y:auto;
+}
+
+.day-card {
+  justify-content: flex-start;
+  border-radius:8px;
+  margin: 4px;
+  width: calc(14.28% - 9px);
+  min-height: 150px;
+}
+
+.current-month-card {
+  background-color: var(--primary) !important;
+}
+
+.other-month-card {
+  background-color: var(--secondary) !important;
+}
+
+.card-text{
+  margin: 5px !important;
+}
+
+.current-month-text {
+  color: var(--primaryText);
+}
+
+.other-month-text {
+  color: var(--secondaryText);
+}
+
+.transaction-card {
+  background-color: var(--alt-colors-9) !important;
+  flex: 0 1 auto;
+  align-self: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 2px;
+  margin: 2px;
+  border-radius:4px;
+}
+    

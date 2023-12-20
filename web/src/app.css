@@ -1,0 +1,11 @@
+.loggedIn {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.sideControls {
+  max-height: 92vh; 
+  margin-top:32px;
+  justify-content: space-between;
+  align-items: space-between;
+}
