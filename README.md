@@ -1,5 +1,5 @@
 # MeantToLive
 
-cd web
-npm i
-npm start
+### cd web
+### npm i
+### npm start
