@@ -1,0 +1,9 @@
+version: '3'
+
+tasks:
+  ui:
+   desc: Run ui
+   dir: web
+   cmds:
+      - npm run dev
+
