@@ -1,4 +1,4 @@
 import { createSignal } from "solid-js";
-import { user } from "./types";
+import { User } from "./types";
 
-export const [getUser, setUser] = createSignal<user>(null);
+export const [getUser, setUser] = createSignal<User | null>(null);

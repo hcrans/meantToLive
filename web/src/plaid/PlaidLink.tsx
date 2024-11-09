@@ -32,11 +32,11 @@ export function PlaidLink() {
 
 const onLinkAccountClick = async () => {
   const user = getUser();
-  if (!user) return;
+  if (!user) throw new Error('no user found');
   // ---PLAID CONNECT DIALOG--- //
   // @ts-ignore
   Plaid.create({
-    token: await createLinkToken(),
+    token: await createLinkToken(user),
     onSuccess: async (publicToken:string, _metadata: unknown) => {
       const success = await storeLinkToken(publicToken, user.id, user.access_token);
       setHasToken(success);
