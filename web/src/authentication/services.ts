@@ -9,5 +9,5 @@ export async function authenticate(email: string, password: string) {
       "Content-Type": "application/json",
     },
   });
-  return await response.json();
+  return response.json();
 }
