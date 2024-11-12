@@ -1,1 +1,1 @@
-export type User = { id: string, access_token: string };
+export type User = { id: string };

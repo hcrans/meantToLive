@@ -8,8 +8,8 @@ import { Transaction } from '../transactions/type';
 export const createPlaidTransactionEffect = () => {
   createEffect(
     on(hasToken, async () => {
-      const accessToken = getUser()?.access_token
-      if (accessToken === undefined) return;
+      // const accessToken = getUser()?.access_token
+      // if (accessToken === undefined) return;
       const data = await fetchPlaidTransactions();
       const transactions: Transaction[] = data.added.map((t: any) => {
         return {
