@@ -7,7 +7,7 @@ import { createLinkToken, storeLinkToken } from './services';
 import { hasToken, setHasToken } from './store';
 
 export function PlaidLink() {
-  return (<div style={ 'margin-top: 50px' }>
+  return (<div style={'margin-top: 50px'}>
     <Show when={!hasToken()}
       //todo: Logout logic
       fallback={
@@ -37,8 +37,8 @@ const onLinkAccountClick = async () => {
   // @ts-ignore
   Plaid.create({
     token: await createLinkToken(user),
-    onSuccess: async (publicToken:string, _metadata: unknown) => {
-      const success = await storeLinkToken(publicToken, user.id, user.access_token);
+    onSuccess: async (publicToken: string, metadata: unknown) => {
+      const success = await storeLinkToken(publicToken, user.id);
       setHasToken(success);
     },
     onEvent: (eventName: string, metadata: unknown) => {

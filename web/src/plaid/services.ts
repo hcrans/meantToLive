@@ -5,7 +5,7 @@ const apiUrl = `http://${window.location.hostname}:${import.meta.env.VITE_API_PO
 export async function createLinkToken(user: User) {
   const res = await fetch(`${apiUrl}/api/create_link_token`, {
     method: "POST",
-    body: JSON.stringify({ user: user.id }),
+    body: JSON.stringify({ userId: user.id }),
     headers: {
       "Content-Type": "application/json",
     },
@@ -14,10 +14,10 @@ export async function createLinkToken(user: User) {
   return data.link_token;
 };
 
-export async function storeLinkToken(plaidToken: string, userId: string, accessToken: string) {
-  const result = await fetch(`${apiUrl}/api/set_access_token`, {
+export async function storeLinkToken(plaidToken: string, userId: string) {
+  const result = await fetch(`${apiUrl}/api/exchange_public_token`, {
     method: "POST",
-    body: JSON.stringify({ public_token: plaidToken, userId: userId, access_token: accessToken }),
+    body: JSON.stringify({ public_token: plaidToken, userId: userId }),
     headers: {
       "Content-Type": "application/json",
     },

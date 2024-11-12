@@ -7,7 +7,7 @@ export async function fetchPlaidTransactions() {
   if (!user) return null;
   const response = await fetch(`${apiUrl}/api/transactions`, {
     method: "GET",
-    headers: { access_token: user.access_token },
+    // headers: { access_token: user.access_token },
   });
   const data = await response.json();
   return data;

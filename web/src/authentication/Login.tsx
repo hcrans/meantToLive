@@ -9,9 +9,8 @@ export const Login = () => {
   const handleSubmit = async () => {
     if (!email || !password) return;
     const result = await authenticate(email(), password());
-    console.log({ result: result });
     if (!result) return;
-    setUser({ id: result.user, access_token: result.token });
+    setUser({ id: result.user });
   }
   const submitDisabled = () => !email() || !password();
   return (
