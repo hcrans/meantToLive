@@ -2,13 +2,13 @@ import { Show } from 'solid-js';
 import IconButton from '@suid/material/IconButton';
 import LinkIcon from '@suid/icons-material/Link';
 import UnlinkIcon from '@suid/icons-material/LinkOff';
-import { getToken, getUser } from '../authentication/store';
+import { getToken } from '../authentication/store';
 import { createLinkToken, storeLinkToken } from './services';
-import { hasToken, setHasToken } from './store';
+import { getHasPlaidToken, setHasPlaidToken } from './store';
 
 export function PlaidLink() {
   return (<div style={'margin-top: 50px'}>
-    <Show when={!hasToken()}
+    <Show when={!getHasPlaidToken()}
       //todo: Logout logic
       fallback={
         <IconButton
@@ -39,7 +39,7 @@ const onLinkAccountClick = async () => {
     token: await createLinkToken(token),
     onSuccess: async (plaidToken: string, metadata: unknown) => {
       const success = await storeLinkToken(plaidToken, token);
-      setHasToken(success);
+      setHasPlaidToken(success);
     },
     onEvent: (eventName: string, metadata: unknown) => {
       console.log("Event:", eventName);
