@@ -1,6 +1,6 @@
 import { createSignal } from "solid-js";
 import { authenticate } from "./services";
-import { setUser } from "./store";
+import { setToken, setUser } from "./store";
 import "./Login.css"
 
 export const Login = () => {
@@ -10,6 +10,7 @@ export const Login = () => {
     if (!email || !password) return;
     const result = await authenticate(email(), password());
     if (!result) return;
+    setToken(result.token);
     setUser({ id: result.user });
   }
   const submitDisabled = () => !email() || !password();
