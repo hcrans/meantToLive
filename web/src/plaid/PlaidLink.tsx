@@ -2,7 +2,7 @@ import { Show } from 'solid-js';
 import IconButton from '@suid/material/IconButton';
 import LinkIcon from '@suid/icons-material/Link';
 import UnlinkIcon from '@suid/icons-material/LinkOff';
-import { getUser } from '../authentication/store';
+import { getToken, getUser } from '../authentication/store';
 import { createLinkToken, storeLinkToken } from './services';
 import { hasToken, setHasToken } from './store';
 
@@ -31,14 +31,14 @@ export function PlaidLink() {
 }
 
 const onLinkAccountClick = async () => {
-  const user = getUser();
-  if (!user) throw new Error('no user found');
+  const token = getToken();
+  if(token===null) return;
   // ---PLAID CONNECT DIALOG--- //
   // @ts-ignore
   Plaid.create({
-    token: await createLinkToken(user),
-    onSuccess: async (publicToken: string, metadata: unknown) => {
-      const success = await storeLinkToken(publicToken, user.id);
+    token: await createLinkToken(token),
+    onSuccess: async (plaidToken: string, metadata: unknown) => {
+      const success = await storeLinkToken(plaidToken, token);
       setHasToken(success);
     },
     onEvent: (eventName: string, metadata: unknown) => {
