@@ -1,5 +1,4 @@
 import { createSignal } from "solid-js";
-import { User } from "./types";
+import { checkAuthentication } from './services';
 
-export const [getUser, setUser] = createSignal<User | null>(null);
-export const [getToken, setToken] = createSignal<string | null>(null);
+export const [getHasToken, setHasToken] = createSignal(await checkAuthentication());
