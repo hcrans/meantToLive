@@ -1,6 +1,11 @@
 version: '3'
 
 tasks:
+  npmI:
+   desc: Npm I
+   dir: web
+   cmds:
+      - npm i
   ui:
    desc: Run ui
    dir: web
