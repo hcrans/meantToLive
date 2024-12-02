@@ -22,11 +22,11 @@ export const Login = () => {
           placeholder="Enter Email"
           name="email"
           onChange={e => setEmail(e.currentTarget.value)} required />
-        <label for="psw"><b>Password</b></label>
+        <label for="password"><b>Password</b></label>
         <input
           type="password"
           placeholder="Enter Password"
-          name="psw"
+          name="password"
           onChange={e => setPassword(e.currentTarget.value)} required />
         <button class="button"
           type="submit"

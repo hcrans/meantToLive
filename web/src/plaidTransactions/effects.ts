@@ -10,7 +10,7 @@ export const createPlaidTransactionEffect = () => {
     on(getHasPlaidToken, async () => {
       const token = getHasToken();
       if(token === null) return;
-      const data = await fetchPlaidTransactions(token);
+      const data = await fetchPlaidTransactions();
       const transactions: Transaction[] = data.added.map((t: any) => {
         return {
           date: new Date(t.date), description: t.name,

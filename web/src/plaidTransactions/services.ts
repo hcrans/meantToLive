@@ -1,11 +1,11 @@
 const apiUrl = `http://${window.location.hostname}:${import.meta.env.VITE_API_PORT}`
 
-export async function fetchPlaidTransactions(token: string) {
+export async function fetchPlaidTransactions() {
   const response = await fetch(`${apiUrl}/plaid/transactions`, {
     credentials: 'include',
     method: "GET",
     headers: {
-      "Authorization": `Bearer ${token}`,
+      "Content-Type": "application/json",
     },
   });
   const data = await response.json();
