@@ -12,10 +12,10 @@ export async function login(email: string, password: string) {
   return response.status === 200;
 }
 
-export async function checkAuthentication() {
-  const response = await fetch(`${apiUrl}/auth/check`, {
+export async function refreshAuthentication() {
+  const response = await fetch(`${apiUrl}/auth/refresh`, {
     credentials: 'include',
-    method: "POST",
+    method: "GET",
     headers: {
       "Content-Type": "application/json",
     },

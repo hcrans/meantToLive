@@ -2,7 +2,8 @@ const apiUrl = `http://${window.location.hostname}:${import.meta.env.VITE_API_PO
 
 export async function createLinkToken() {
   const res = await fetch(`${apiUrl}/plaid/create_link_token`, {
-    method: "POST",
+    credentials: 'include',
+    method: "GET",
     headers: {
       "Content-Type": "application/json",
     },
@@ -13,8 +14,20 @@ export async function createLinkToken() {
 
 export async function storeLinkToken(plaidToken: string) {
   const result = await fetch(`${apiUrl}/plaid/exchange_public_token`, {
+    credentials: 'include',
     method: "POST",
     body: JSON.stringify({ public_token: plaidToken }),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  return result.ok;
+}
+
+export async function checkForLinkToken() {
+  const result = await fetch(`${apiUrl}/plaid/check_link`, {
+    credentials: 'include',
+    method: "GET",
     headers: {
       "Content-Type": "application/json",
     },

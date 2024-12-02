@@ -1,4 +1,4 @@
 import { createSignal } from "solid-js";
-import { checkAuthentication } from './services';
+import { refreshAuthentication } from './services';
 
-export const [getHasToken, setHasToken] = createSignal(await checkAuthentication());
+export const [getHasToken, setHasToken] = createSignal(await refreshAuthentication());
