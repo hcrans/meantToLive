@@ -9,35 +9,15 @@
     "serve": "vite preview"
   },
   "license": "MIT",
-  "devDependencies": {
-    "@types/node": "^18.11.9",
-    "@typescript-eslint/eslint-plugin": "^5.41.0",
-    "eslint": "^8.26.0",
-    "eslint-config-standard-with-typescript": "^23.0.0",
-    "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-n": "^15.3.0",
-    "eslint-plugin-promise": "^6.1.1",
-    "eslint-plugin-react": "^7.31.10",
-    "typescript": "^4.8.4",
-    "vite": "^3.2.10",
-    "vite-plugin-solid": "^2.3.9"
-  },
   "dependencies": {
-    "@suid/icons-material": "^0.6.11",
-    "@supabase/supabase-js": "^2.1.0",
-    "@vanilla-extract/css": "^1.9.1",
-    "body-parser": "^1.19.1",
-    "cookie-parser": "^1.4.6",
-    "cors": "^2.8.5",
-    "dotenv": "^16.0.3",
-    "express": "^4.17.2",
-    "express-list-endpoints": "^6.0.0",
-    "express-session": "^1.17.2",
-    "moment": "^2.29.4",
-    "npm": "^9.2.0",
-    "path": "^0.12.7",
-    "plaid": "^9.10.0",
-    "solid-js": "^1.5.1",
-    "uuid": "^9.0.0"
+    "@suid/icons-material": "^0.8.1",
+    "solid-js": "^1.9.3",
+    "typescript": "^5.7.2",
+    "uuid": "^11.0.3",
+    "vite": "^6.0.2",
+    "vite-plugin-solid": "^2.11.0"
+  },
+  "devDependencies": {
+    "eslint-plugin-solid": "^0.14.4"
   }
 }

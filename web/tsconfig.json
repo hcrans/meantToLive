@@ -1,16 +1,24 @@
 {
   "compilerOptions": {
-    "strict": true,
-    "target": "ESNext",
-    "module": "ESNext",
-    "moduleResolution": "node",
-    "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
-    "jsx": "preserve",
-    "jsxImportSource": "solid-js",
-    "types": ["vite/client"],
-    "noEmit": true,
-    "isolatedModules": true,
-    "allowJs": true,
-  }
+    "target": "ESNext", // SolidJS uses modern JS features
+    "module": "ESNext", // ES modules for tree-shaking
+    "jsx": "preserve", // Preserve JSX; SolidJS's compiler handles it
+    "jsxImportSource": "solid-js", // Specify SolidJS as the JSX factory
+    "strict": true, // Enable strict type-checking for better safety
+    "moduleResolution": "node", // Resolve modules in Node.js style
+    "esModuleInterop": true, // Compatibility with CommonJS modules
+    "allowSyntheticDefaultImports": true, // Support default imports for interop
+    "forceConsistentCasingInFileNames": true, // Enforce consistent casing
+    "isolatedModules": true, // Required for modern tools like Vite
+    "skipLibCheck": true, // Skip type-checking declaration files for speed
+    "resolveJsonModule": true, // Allow importing JSON files
+    "baseUrl": ".", // Base path for imports
+    "paths": {
+      "@/*": ["src/*"] // Set up alias for cleaner imports
+    },
+    "types": ["vite/client", "solid-js"] // Include types for Vite and SolidJS
+  },
+  "include": ["src"], // Include the source directory
+  "exclude": ["node_modules", "dist"] // Exclude unnecessary folders
 }
+

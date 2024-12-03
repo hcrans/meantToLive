@@ -5,8 +5,11 @@ import UnlinkIcon from '@suid/icons-material/LinkOff';
 import { getHasToken } from '../authentication/store';
 import { createLinkToken, storeLinkToken } from './services';
 import { getHasPlaidToken, setHasPlaidToken } from './store';
+import { createPlaidHasTokenEffect } from '../plaidTransactions/effects';
 
 export function PlaidLink() {
+  createPlaidHasTokenEffect()
+
   return (<div style={'margin-top: 50px'}>
     <Show when={!getHasPlaidToken()}
       //todo: Logout logic
@@ -32,14 +35,14 @@ export function PlaidLink() {
 
 const onLinkAccountClick = async () => {
   const token = getHasToken();
-  if(token) return;
+  if (!token) return;
   // ---PLAID CONNECT DIALOG--- //
   // @ts-ignore
   Plaid.create({
     token: await createLinkToken(),
     onSuccess: async (plaidToken: string, metadata: unknown) => {
-      const success = await storeLinkToken(plaidToken);
-      setHasPlaidToken(success);
+      const hasPlaidToken = await storeLinkToken(plaidToken);
+      setHasPlaidToken(hasPlaidToken);
     },
     onEvent: (eventName: string, metadata: unknown) => {
       console.log("Event:", eventName);
