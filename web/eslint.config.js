@@ -1,10 +1,11 @@
-{
+export default [
+  {
     "env": {
         "browser": true,
         "es2021": true
     },
     "extends": [
-        "plugin:react/recommended",
+        "plugin:solid/typescript",
         "standard-with-typescript"
     ],
     "overrides": [
@@ -15,8 +16,9 @@
         "project": ["./tsconfig.json"]
     },
     "plugins": [
-        "react"
+        "solid"
     ],
     "rules": {
     }
-}
+  }
+];

@@ -1,15 +1,19 @@
 import { createEffect, on } from 'solid-js';
 import { getHasToken } from '../authentication/store';
-import { getHasPlaidToken } from '../plaid/store';
+import { getHasPlaidToken, setHasPlaidToken } from '../plaid/store';
 import { fetchPlaidTransactions } from '../plaidTransactions/services';
 import { setTransactions } from '../transactions/store';
 import { Transaction } from '../transactions/type';
+import { checkForLinkToken } from '../plaid/services';
 
 export const createPlaidTransactionEffect = () => {
   createEffect(
     on(getHasPlaidToken, async () => {
+      console.log({ plaidToken: getHasPlaidToken() });
+      if (!getHasPlaidToken()) return;
       const token = getHasToken();
-      if(token === null) return;
+      console.log({ token });
+      if (token === null) return;
       const data = await fetchPlaidTransactions();
       const transactions: Transaction[] = data.added.map((t: any) => {
         return {
@@ -18,5 +22,14 @@ export const createPlaidTransactionEffect = () => {
         }
       });
       setTransactions(transactions);
+    }));
+}
+
+export const createPlaidHasTokenEffect = () => {
+  createEffect(
+    on(getHasToken, async () => {
+      if (!getHasToken()) return;
+      const hasPlaidToken = await checkForLinkToken();
+      setHasPlaidToken(hasPlaidToken);
     }));
 }
