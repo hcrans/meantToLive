@@ -1,7 +1,7 @@
 .tab {
   position: relative;
-  background-color: #f1f1f1;
-  border: 1px solid #ccc;
+  background-color: var(--secondary-background);
+  border: 1px solid var(--color-palette-1-1);
   border-radius: 8px 0 0 8px; /* Adjust border radius for the left corners */
   padding: 8px 12px;
   cursor: pointer;
@@ -9,10 +9,11 @@
 }
 
 .tab:hover {
-  background-color: #ddd;
+  background-color: var(--secondary);
 }
 
 .tab.active {
-  background-color: darkgray;
+  background-color: var(--color-palette-1-4);
+  color: var(--background-text)
   font-weight: bold;
 }

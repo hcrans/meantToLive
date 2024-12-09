@@ -12,3 +12,8 @@ tasks:
    cmds:
       - npm run dev
 
+  api:
+   desc: Run ui
+   dir: ../beautifulLetdown
+   cmds:
+      - task api
