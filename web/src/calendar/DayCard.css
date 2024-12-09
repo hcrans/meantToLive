@@ -15,11 +15,11 @@
 }
 
 .current-month-card {
-  background-color: var(--primary) !important;
+  background-color: var(--secondary-background) !important;
 }
 
 .other-month-card {
-  background-color: var(--secondary) !important;
+  background-color: var(--unfocused-background) !important;
 }
 
 .card-text{
@@ -27,11 +27,11 @@
 }
 
 .current-month-text {
-  color: var(--primaryText);
+  color: var(--primary-text);
 }
 
 .other-month-text {
-  color: var(--secondaryText);
+  color: var(--unfocused-text);
 }
 
 .transaction-card {
