@@ -10,8 +10,12 @@ export function DayCard(props: { date: Date }) {
 
   createEffect(() => {
     console.log({
-      isCurrentMonth: isSelectedMonth(), givenmonth: props.date.getMonth() + 1, givenyear: props.date.getFullYear(), month: selectedMonthNumber(), year: selectedYear(),
-      boolResult1: (props.date.getMonth() + 1) === selectedMonthNumber(), boolResult2: props.date.getFullYear() === selectedYear()
+      isCurrentMonth: isSelectedMonth(),
+      givenmonth: props.date.getMonth() + 1,
+      givenyear: props.date.getFullYear(),
+      month: selectedMonthNumber(), year: selectedYear(),
+      boolResult1: (props.date.getMonth() + 1) === selectedMonthNumber(),
+      boolResult2: props.date.getFullYear() === selectedYear()
     })
   });
 
@@ -28,6 +32,7 @@ export function DayCard(props: { date: Date }) {
         }</label>
       <For each={transactions()}>{(t: Transaction) =>
         <div class="transaction-card">
+          {t.logo_url ? <img src={t.logo_url} height='23px' width='23px' alt="transaction-logo" /> : <></>}
           <label color="white" >
             {`${t.description}:`}
           </label>
