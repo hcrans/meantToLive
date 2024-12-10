@@ -17,8 +17,11 @@ export const createPlaidTransactionEffect = () => {
       const data = await fetchPlaidTransactions();
       const transactions: Transaction[] = data.added.map((t: any) => {
         return {
-          date: new Date(t.date), description: t.name,
-          account: t.name, amount: t.amount
+          date: new Date(t.date),
+          description: t.name,
+          account: t.name,
+          amount: t.amount,
+          logo_url: t.logo_url
         }
       });
       setTransactions(transactions);
