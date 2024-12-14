@@ -3,7 +3,7 @@ import IconButton from '@suid/material/IconButton';
 import LinkIcon from '@suid/icons-material/Link';
 import UnlinkIcon from '@suid/icons-material/LinkOff';
 import { getHasToken } from '../authentication/store';
-import { createLinkToken, storeLinkToken } from './services';
+import { createLinkToken, storeLinkToken, unlinkPlaid } from './services';
 import { getHasPlaidToken, setHasPlaidToken } from './store';
 import { createPlaidHasTokenEffect } from '../plaidTransactions/effects';
 
@@ -16,7 +16,8 @@ export function PlaidLink() {
       fallback={
         <IconButton
           type="button"
-          id="unlink-account">
+          id="unlink-account"
+          onclick={onUnlinkAccountClick}>
           <UnlinkIcon />
 
         </IconButton>
@@ -53,4 +54,12 @@ const onLinkAccountClick = async () => {
     },
   }).open();
   // --- --- //
+}
+
+const onUnlinkAccountClick = async () => {
+  const token = getHasToken();
+  if (!token) return;
+
+  const result = await unlinkPlaid();
+  setHasPlaidToken(!result)
 }
