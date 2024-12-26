@@ -3,11 +3,13 @@ import { DayCard } from './DayCard';
 import { Header } from './Header';
 import { MonthNumber, Year } from './types';
 import { selectedMonthNumber, selectedYear } from './store';
-import { createPlaidTransactionEffect } from '../plaidTransactions/effects';
 import './Calendar.css'
+import { createPlaidTransactionEffect } from '../plaidTransactions/effects';
+import { createTransactionEffect } from '../transactions/effects';
 
 export function CalendarView() {
   createPlaidTransactionEffect();
+  createTransactionEffect();
 
   return (
     <div class="calendarView">
