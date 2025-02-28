@@ -4,7 +4,7 @@ export type MonthName = typeof MonthNames[number];
 export const MonthAbbrevs = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"] as const;
 export type MonthAbbrev = typeof MonthAbbrevs[number];
 
-export const Years = [2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024] as const;
+export const Years = [2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025] as const;
 export type Year = typeof Years[number];
 
 export const MonthNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] as const;

@@ -13,14 +13,18 @@ export function createTransactionEffect() {
 export async function fetchAndSetTransactions() {
   if (!getHasToken()) return;
   const data = await fetchTransactions();
-  const transactions: Transaction[] = data.transactions?.map((t: any) => {
+  console.log({ data });
+
+  if (data.transactions === undefined) return;
+  const transactions = data.transactions.map((t: any) => {
     return {
       date: new Date(t.date),
       description: t.description,
-      // account: t.account,
+      accountId: t.account_id,
       amount: t.amount,
-      // logo_url: t.logo_url
-    }
-  }) ?? [];
+      logoUrl: t.logo_url
+    } satisfies Transaction
+  });
+  console.log({ transactions });
   setTransactions(transactions);
 }

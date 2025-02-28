@@ -7,6 +7,7 @@ import { getHasToken } from './authentication/store';
 import { Login } from './authentication/Login';
 import './app.css'
 import { DateNavigation } from './dateNavigation/DateNavigation.jsx';
+import { AccountsView } from './accounts/Accounts.jsx';
 
 export function App() {
   const selectedMonthName = () => Months[selectedMonthNumber()].MonthName;
@@ -26,6 +27,7 @@ export function App() {
             <PlaidLink />
           </div>
           <CalendarView />
+          <AccountsView />
         </div>
       </div>
     </Show>

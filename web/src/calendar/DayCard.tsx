@@ -1,4 +1,4 @@
-import { createEffect, For } from "solid-js";
+import { For } from "solid-js";
 import { getTransactions } from '../transactions/store';
 import { Transaction } from "../transactions/type";
 import { selectedMonthNumber, selectedYear } from "./store";
@@ -7,17 +7,6 @@ import "./DayCard.css"
 export function DayCard(props: { date: Date }) {
   const transactions = () => getTransactions().filter(t => t.date.toDateString() === props.date.toDateString());
   const isSelectedMonth = () => (props.date.getMonth() + 1) === selectedMonthNumber() && props.date.getFullYear() === selectedYear();
-
-  createEffect(() => {
-    console.log({
-      isCurrentMonth: isSelectedMonth(),
-      givenmonth: props.date.getMonth() + 1,
-      givenyear: props.date.getFullYear(),
-      month: selectedMonthNumber(), year: selectedYear(),
-      boolResult1: (props.date.getMonth() + 1) === selectedMonthNumber(),
-      boolResult2: props.date.getFullYear() === selectedYear()
-    })
-  });
 
   return (
     <div class="day-card" classList={{
@@ -32,7 +21,7 @@ export function DayCard(props: { date: Date }) {
         }</label>
       <For each={transactions()}>{(t: Transaction) =>
         <div class="transaction-card">
-          {t.logo_url ? <img src={t.logo_url} height='23px' width='23px' alt="transaction-logo" /> : <></>}
+          {t.logoUrl ? <img src={t.logoUrl} height='23px' width='23px' alt="transaction-logo" /> : <></>}
           <label color="white" >
             {`${t.description}:`}
           </label>

@@ -11,23 +11,23 @@ export function PlaidLink() {
   createPlaidHasTokenEffect()
 
   return (<div style={'margin-top: 50px'}>
-    <Show when={!getHasPlaidToken()}
-      //todo: Logout logic
+    <Show
       fallback={
         <IconButton
           type="button"
-          id="unlink-account"
-          onclick={onUnlinkAccountClick}>
-          <UnlinkIcon />
+          id="link-account"
+          onclick={onLinkAccountClick}>
+
+          <LinkIcon style={{ color: "lightslategray" }} />
 
         </IconButton>
-      } >
+      }
+      when={getHasPlaidToken()}>
       <IconButton
         type="button"
-        id="link-account"
-        onclick={onLinkAccountClick}>
-
-        <LinkIcon style={{ color: "lightslategray" }} />
+        id="unlink-account"
+        onclick={onUnlinkAccountClick}>
+        <UnlinkIcon />
 
       </IconButton>
     </Show>
