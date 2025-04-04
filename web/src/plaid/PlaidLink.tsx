@@ -2,10 +2,10 @@ import { Show } from 'solid-js';
 import IconButton from '@suid/material/IconButton';
 import LinkIcon from '@suid/icons-material/Link';
 import UnlinkIcon from '@suid/icons-material/LinkOff';
-import { getHasToken } from '../authentication/store';
 import { createLinkToken, storeLinkToken, unlinkPlaid } from './services';
 import { getHasPlaidToken, setHasPlaidToken } from './store';
 import { createPlaidHasTokenEffect } from '../plaidTransactions/effects';
+import { useAuthenticationContext } from '../authentication/authentication-provider';
 
 export function PlaidLink() {
   createPlaidHasTokenEffect()
@@ -35,6 +35,7 @@ export function PlaidLink() {
 }
 
 const onLinkAccountClick = async () => {
+  const { getHasToken } = useAuthenticationContext();
   const token = getHasToken();
   if (!token) return;
   // ---PLAID CONNECT DIALOG--- //
@@ -57,6 +58,7 @@ const onLinkAccountClick = async () => {
 }
 
 const onUnlinkAccountClick = async () => {
+  const { getHasToken } = useAuthenticationContext();
   const token = getHasToken();
   if (!token) return;
 

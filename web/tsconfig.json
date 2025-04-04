@@ -12,10 +12,10 @@
     "isolatedModules": true, // Required for modern tools like Vite
     "skipLibCheck": true, // Skip type-checking declaration files for speed
     "resolveJsonModule": true, // Allow importing JSON files
-    "baseUrl": ".", // Base path for imports
-    "paths": {
-      "@/*": ["src/*"] // Set up alias for cleaner imports
-    },
+    // "baseUrl": "src", // Base path for imports
+    // "paths": {
+    //   "@/*": ["*"] // Set up alias for cleaner imports
+    // },
     "types": ["vite/client", "solid-js"] // Include types for Vite and SolidJS
   },
   "include": ["src"], // Include the source directory

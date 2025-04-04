@@ -1,11 +1,12 @@
 import { createEffect, on } from 'solid-js';
-import { getHasToken } from '../authentication/store';
 import { getHasPlaidToken, setHasPlaidToken } from '../plaid/store';
 import { checkForLinkToken } from '../plaid/services';
 import { fetchPlaidTransactions } from './services';
 import { fetchAndSetTransactions } from '../transactions/effects';
+import { useAuthenticationContext } from '../authentication/authentication-provider';
 
 export const createPlaidTransactionEffect = () => {
+  const {getHasToken} = useAuthenticationContext();
   createEffect(
     on(getHasPlaidToken, async () => {
       if (!getHasPlaidToken()) return;
@@ -16,6 +17,7 @@ export const createPlaidTransactionEffect = () => {
 }
 
 export const createPlaidHasTokenEffect = () => {
+  const {getHasToken} = useAuthenticationContext();
   createEffect(
     on(getHasToken, async () => {
       if (!getHasToken()) return;

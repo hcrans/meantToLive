@@ -1,19 +1,28 @@
 version: '3'
 
 tasks:
+
   npmI:
-   desc: Npm I
+   desc: install dependencies
    dir: web
    cmds:
       - npm i
+
+  build:
+   desc: build
+   dir: web
+   sources:
+     - src/**/*.{ts,tsx,js,jsx}  # Files to watch
+   cmds:
+     - npm run build
   ui:
-   desc: Run ui
+   desc: run ui
    dir: web
    cmds:
       - npm run dev
 
   api:
-   desc: Run api
+   desc: run api
    dir: ../beautifulLetdown
    cmds:
       - task api

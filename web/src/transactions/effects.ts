@@ -1,8 +1,8 @@
 import { createEffect } from 'solid-js';
-import { getHasToken } from '../authentication/store';
 import { Transaction } from './type';
 import { setTransactions } from './store';
 import { fetchTransactions } from './services';
+import { useAuthenticationContext } from '../authentication/authentication-provider';
 
 export function createTransactionEffect() {
   createEffect(async () => {
@@ -11,20 +11,19 @@ export function createTransactionEffect() {
 }
 
 export async function fetchAndSetTransactions() {
+  const { getHasToken } = useAuthenticationContext();
   if (!getHasToken()) return;
   const data = await fetchTransactions();
-  console.log({ data });
 
   if (data.transactions === undefined) return;
-  const transactions = data.transactions.map((t: any) => {
-    return {
+  const transactions: Transaction[] = data.transactions.map((t: any) =>
+    ({
       date: new Date(t.date),
       description: t.description,
       accountId: t.account_id,
       amount: t.amount,
       logoUrl: t.logo_url
-    } satisfies Transaction
-  });
-  console.log({ transactions });
+    })
+  );
   setTransactions(transactions);
 }

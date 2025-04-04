@@ -1,9 +1,11 @@
 import { createSignal } from "solid-js";
-import { login } from "./services";
-import { setHasToken } from "./store";
+import { authenticationService } from "./services";
 import "./Login.css"
+import { useAuthenticationContext } from './authentication-provider';
 
 export const Login = () => {
+  const { setHasToken } = useAuthenticationContext();
+  const { login } = authenticationService();
   const [email, setEmail] = createSignal('');
   const [password, setPassword] = createSignal('');
   const handleSubmit = async () => {

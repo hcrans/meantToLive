@@ -1,8 +1,8 @@
-import { getHasToken } from '../authentication/store';
 import { createEffect } from 'solid-js';
 import { fetchAccounts } from './services';
 import { Account } from './model';
 import { getAccounts, setAccounts } from './store';
+import { useAuthenticationContext } from '../authentication/authentication-provider';
 
 export function createAccountsEffect() {
   createEffect(async () => {
@@ -11,6 +11,7 @@ export function createAccountsEffect() {
 }
 
 export async function fetchAndSetAccounts() {
+  const { getHasToken } = useAuthenticationContext();
   if (!getHasToken()) return;
   const data = await fetchAccounts();
   if (data.accounts === undefined) return;
