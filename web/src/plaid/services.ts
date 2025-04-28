@@ -2,7 +2,6 @@ const apiUrl = `http://${window.location.hostname}:${import.meta.env.VITE_API_PO
 console.log({ apiUrl })
 
 export async function createLinkToken() {
-  console.log('lame');
   const response = await fetch(`${apiUrl}/plaid/create_link_token`, {
     credentials: 'include',
     method: "GET",
@@ -10,7 +9,6 @@ export async function createLinkToken() {
       'Content-Type': 'application/json'
     }
   })
-  console.log({ response });
   const data = await response.json()
   return data.link_token
 };

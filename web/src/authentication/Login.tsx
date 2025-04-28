@@ -1,11 +1,12 @@
 import { createSignal } from "solid-js";
-import { authenticationService } from "./services";
 import "./Login.css"
-import { useAuthenticationContext } from './authentication-provider';
+import { useAppState } from '../providers/application-state.provider';
+import { useAppServices } from '../providers/service.provider';
 
 export const Login = () => {
-  const { setHasToken } = useAuthenticationContext();
-  const { login } = authenticationService();
+  const { setHasToken } = useAppState(state => state.authentication);
+  const { login } = useAppServices(service => service.authentication);
+
   const [email, setEmail] = createSignal('');
   const [password, setPassword] = createSignal('');
   const handleSubmit = async () => {

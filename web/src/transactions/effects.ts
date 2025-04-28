@@ -2,7 +2,7 @@ import { createEffect } from 'solid-js';
 import { Transaction } from './type';
 import { setTransactions } from './store';
 import { fetchTransactions } from './services';
-import { useAuthenticationContext } from '../authentication/authentication-provider';
+import { useAppState } from '../providers/application-state.provider';
 
 export function createTransactionEffect() {
   createEffect(async () => {
@@ -11,7 +11,7 @@ export function createTransactionEffect() {
 }
 
 export async function fetchAndSetTransactions() {
-  const { getHasToken } = useAuthenticationContext();
+  const { getHasToken } = useAppState(state => state.authentication);
   if (!getHasToken()) return;
   const data = await fetchTransactions();
 

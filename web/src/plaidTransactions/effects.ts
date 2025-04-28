@@ -3,10 +3,10 @@ import { getHasPlaidToken, setHasPlaidToken } from '../plaid/store';
 import { checkForLinkToken } from '../plaid/services';
 import { fetchPlaidTransactions } from './services';
 import { fetchAndSetTransactions } from '../transactions/effects';
-import { useAuthenticationContext } from '../authentication/authentication-provider';
+import { useAppState } from '../providers/application-state.provider';
 
 export const createPlaidTransactionEffect = () => {
-  const {getHasToken} = useAuthenticationContext();
+  const { getHasToken } = useAppState(state => state.authentication);
   createEffect(
     on(getHasPlaidToken, async () => {
       if (!getHasPlaidToken()) return;
@@ -17,7 +17,7 @@ export const createPlaidTransactionEffect = () => {
 }
 
 export const createPlaidHasTokenEffect = () => {
-  const {getHasToken} = useAuthenticationContext();
+  const { getHasToken } = useAppState(state => state.authentication);
   createEffect(
     on(getHasToken, async () => {
       if (!getHasToken()) return;

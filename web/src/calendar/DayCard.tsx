@@ -1,12 +1,13 @@
 import { For } from "solid-js";
 import { getTransactions } from '../transactions/store';
 import { Transaction } from "../transactions/type";
-import { selectedMonthNumber, selectedYear } from "./store";
 import "./DayCard.css"
+import { useAppState } from '../providers/application-state.provider';
 
 export function DayCard(props: { date: Date }) {
+  const { selectedMonthNumber, selectedYear } = useAppState(state => state.calendar);
   const transactions = () => getTransactions().filter(t => t.date.toDateString() === props.date.toDateString());
-  const isSelectedMonth = () => (props.date.getMonth() + 1) === selectedMonthNumber() && props.date.getFullYear() === selectedYear();
+  const isSelectedMonth = () => (props.date.getMonth() + 1) === selectedMonthNumber && props.date.getFullYear() === selectedYear;
 
   return (
     <div class="day-card" classList={{

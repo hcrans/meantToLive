@@ -1,5 +1,8 @@
 {
   "devDependencies": {
     "solid-devtools": "^0.31.6"
+  },
+  "dependencies": {
+    "@solidjs/router": "^0.15.3"
   }
 }

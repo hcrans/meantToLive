@@ -1,4 +1,4 @@
-import { MONTH_NAMES, MONTH_ABBREVS, YEARS, MONTH_NUMBERS } from './utils';
+import { MONTH_ABBREVS, MONTH_NAMES, MONTH_NUMBERS, YEARS } from './constants';
 
 export type MonthName = typeof MONTH_NAMES[number];
 export type MonthAbbrev = typeof MONTH_ABBREVS[number];

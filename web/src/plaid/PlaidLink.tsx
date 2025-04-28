@@ -5,9 +5,11 @@ import UnlinkIcon from '@suid/icons-material/LinkOff';
 import { createLinkToken, storeLinkToken, unlinkPlaid } from './services';
 import { getHasPlaidToken, setHasPlaidToken } from './store';
 import { createPlaidHasTokenEffect } from '../plaidTransactions/effects';
-import { useAuthenticationContext } from '../authentication/authentication-provider';
+import { useAppState } from '../providers/application-state.provider';
 
 export function PlaidLink() {
+  const { getHasToken } = useAppState(state => state.authentication);
+  const hasToken = getHasToken();
   createPlaidHasTokenEffect()
 
   return (<div style={'margin-top: 50px'}>
@@ -16,7 +18,7 @@ export function PlaidLink() {
         <IconButton
           type="button"
           id="link-account"
-          onclick={onLinkAccountClick}>
+          onclick={() => onLinkAccountClick(hasToken)}>
 
           <LinkIcon style={{ color: "lightslategray" }} />
 
@@ -34,10 +36,8 @@ export function PlaidLink() {
   </div>);
 }
 
-const onLinkAccountClick = async () => {
-  const { getHasToken } = useAuthenticationContext();
-  const token = getHasToken();
-  if (!token) return;
+const onLinkAccountClick = async (hasToken: boolean) => {
+  if (!hasToken) return;
   // ---PLAID CONNECT DIALOG--- //
   // @ts-ignore
   Plaid.create({
@@ -58,7 +58,7 @@ const onLinkAccountClick = async () => {
 }
 
 const onUnlinkAccountClick = async () => {
-  const { getHasToken } = useAuthenticationContext();
+  const { getHasToken } = useAppState(state => state.authentication);
   const token = getHasToken();
   if (!token) return;
 
