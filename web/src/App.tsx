@@ -10,7 +10,7 @@ import { getMonth } from './calendar/utils.js';
 
 export function App() {
   const { selectedMonthNumber, selectedYear } = useAppState(state => state.calendar);
-  const selectedMonthName = () => getMonth(selectedMonthNumber).monthName;
+  const selectedMonthName = () => getMonth(selectedMonthNumber()).monthName;
   const { getHasToken } = useAppState(state => state.authentication);
   return (
     <Show
@@ -20,7 +20,7 @@ export function App() {
       }>
       <div class="column" >
         <h1>
-          {selectedMonthName() + " " + selectedYear}
+          {selectedMonthName() + " " + selectedYear()}
         </h1>
         <div class="row loggedIn" >
           <div class="column sideControls">

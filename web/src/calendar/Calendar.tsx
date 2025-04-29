@@ -16,7 +16,7 @@ export function CalendarView() {
     <div class="calendarView">
       <Header />
       <div class="card-grid">
-        <For each={getListOfDaysInMonth(selectedYear, selectedMonthNumber)}>
+        <For each={getListOfDaysInMonth(selectedYear(), selectedMonthNumber())}>
           {date => <DayCard date={date} />}
         </For>
       </div>
